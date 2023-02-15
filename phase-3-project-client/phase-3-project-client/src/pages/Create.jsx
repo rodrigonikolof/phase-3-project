@@ -1,4 +1,4 @@
-import { Typography, Button, Container, TextField } from "@mui/material";
+import { Typography, Button, Container, TextField, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { makeStyles } from '@mui/styles';
 import { useState } from "react";
@@ -18,13 +18,14 @@ export default function Create() {
     const [details, setDetails] = useState('')
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
+    const [category, setCategory] = useState('todo')
 
     const handleSubmit = (e)=>{
       e.preventDefault()
       title? setTitleError(false) : setTitleError(true)
       details? setDetailsError(false) : setDetailsError(true)
       if (title && details){
-      console.log(`Title is ${title} and body is ${details}`)
+      console.log(`Title is ${title}, body is ${details} and category is ${category}`)
       }
     }
  
@@ -49,6 +50,10 @@ export default function Create() {
             label="Note Details" color="error" fullWidth required sx={{marginBottom: 1 }} 
             multiline rows={4} error={detailsError}
             />
+          <RadioGroup value={category} onChange={(e)=>setCategory(e.target.value)}>
+            <FormControlLabel value="todo" control={<Radio/>} label="To-Do"/>
+            <FormControlLabel value="toavoid" control={<Radio/>} label="To-Avoid"/>
+          </RadioGroup>
 
           <Button type="submit" color="error" variant="contained" endIcon={<KeyboardArrowRightIcon/>}
           >
