@@ -13,27 +13,15 @@
       "id": 2
     },
     {
-      "title": "Make dinner",
-      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "category": "todos",
-      "id": 3
-    },
-    {
-      "title": "Organise Birthday Party",
-      "details": "akjbg ouheoihegqeg qoi4htqotiqt",
-      "category": "todo",
-      "id": 4
-    },
-    {
       "title": "Organise Birthday Party",
       "details": "akjbg ouheoihegqeg qoi4htqotiqt",
       "category": "todo",
       "id": 5
     },
     {
-      "title": "asdasda",
-      "details": "qwqweq",
-      "category": "toavoid",
+      "title": "Create new Note!",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "category": "todo",
       "id": 6
     }
   ]
