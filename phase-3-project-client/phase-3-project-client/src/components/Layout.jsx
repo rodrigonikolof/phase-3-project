@@ -7,28 +7,7 @@ import { useState } from 'react';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { useNavigate } from "react-router-dom";
 import DrawerMenu from './DrawerMenu'
-
-
-// const drawerWidth = 220
-
-// const useStyles = makeStyles({
-//   page: {
-//     background: '#f9f9f9',
-//     width: '100%',
-//   },
-//   root: {
-//     display: 'flex',
-//   },
-//   drawer: {
-//     width: drawerWidth,
-    
-//   },
-//   drawerPaper: {
-//     width: drawerWidth,
-//   },
-// })
-
-
+import {format} from 'date-fns'
 
 export default function Layout({children}){
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -48,11 +27,6 @@ export default function Layout({children}){
         },
       ];
 
-    const Styled = styled('div')({
-        background: 'rgb(241, 240, 235)',
-        width: '100%'
-    })
-
     return (
 <div>
 <Box sx={{ flexGrow: 1, mb: 3  }}>
@@ -69,9 +43,10 @@ export default function Layout({children}){
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+               Note Tracker
           </Typography>
-          <Button color="inherit">Login</Button>
+          {/* <Button color="inherit">Login</Button> */}
+          <Typography>{format(new Date(), 'do MMMM Y')}</Typography>
         </Toolbar>
       </AppBar>
     </Box>  
@@ -83,7 +58,7 @@ export default function Layout({children}){
     >
       <Box>
       <Container sx={{mt:2}}>
-        <Typography variant="h5"> Note Tracker </Typography>
+        <Typography variant="h6"> Menu </Typography>
       </Container>
           <List>
           {menuItems.map((item) => (
@@ -111,40 +86,5 @@ export default function Layout({children}){
   </div>
 </div>
 
-        // <div className={classes.root}>
-
-        //      <Drawer
-        //         className={classes.drawer}
-        //         variant="permanent"
-        //         classes={{ paper: classes.drawerPaper }}
-        //         anchor="left"
-        //         > 
-                // <div>
-                //     <Typography variant="h5" className={classes.title}> Note Tracker </Typography>
-                // </div>
-
-                //     <List>
-                //     {menuItems.map((item) => (
-                //         <ListItem 
-                //         key={item.text} 
-                //         >
-                //             <ListItemButton 
-                //                 onClick={()=>navigate(item.path)} 
-                //             >
-                //         <ListItemIcon>{item.icon}</ListItemIcon>
-                //         <ListItemText primary={item.text} />
-                //         </ListItemButton>
-                //         </ListItem>
-                //     ))}
-                //     </List>
-        //     </Drawer>
-            
-
-        //     <Styled>
-        //     <div className="page-container">
-        //         {children}
-        //     </div>
-        //     </Styled>
-        // </div>
     )
 }

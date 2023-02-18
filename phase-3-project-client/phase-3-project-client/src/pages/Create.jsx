@@ -59,8 +59,9 @@ export default function Create() {
             multiline rows={4} error={detailsError}
             />
           <RadioGroup value={category} onChange={(e)=>setCategory(e.target.value)}>
-            <FormControlLabel value="todo" control={<Radio/>} label="To-Do"/>
-            <FormControlLabel value="toavoid" control={<Radio/>} label="To-Avoid"/>
+            <FormControlLabel value="Non-Urgent" control={<Radio/>} label="Non-Urgent"/>
+            <FormControlLabel value="Attention" control={<Radio/>} label="Needs Attention"/>
+            <FormControlLabel value="Urgent" control={<Radio/>} label="Urgent"/>
           </RadioGroup>
 
           <Button type="submit" color="error" variant="contained" endIcon={<KeyboardArrowRightIcon/>}
