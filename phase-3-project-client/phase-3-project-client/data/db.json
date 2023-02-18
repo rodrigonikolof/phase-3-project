@@ -7,12 +7,6 @@
       "id": 1
     },
     {
-      "title": "Get more toilet paper",
-      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
-      "category": "work",
-      "id": 2
-    },
-    {
       "title": "Organise Birthday Party",
       "details": "akjbg ouheoihegqeg qoi4htqotiqt",
       "category": "todo",
@@ -23,6 +17,12 @@
       "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "category": "todo",
       "id": 6
+    },
+    {
+      "title": "Play with the nug",
+      "details": "kanglahgeilahegew",
+      "category": "toavoid",
+      "id": 7
     }
   ]
 }
