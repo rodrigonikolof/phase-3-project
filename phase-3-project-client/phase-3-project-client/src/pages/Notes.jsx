@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { Grid, Container } from '@mui/material';
 import NoteCard from "../components/NoteCard";
+import Masonry from 'react-masonry-css';
 
 
 
-export default function Notes() {
+
+export default function Notes({noteForUpdateSetter}) {
 
 const [notes, setNotes] = useState([])
 
@@ -22,16 +24,29 @@ const handleDelete = async (id) => {
   setNotes(notes.filter(note => note.id != id ))
 }
 
+const breakpoints = {
+  default: 4,
+  1100: 3,
+  700: 2,
+  500: 1
+}
+
     return (
       <Container>
         
-        <Grid container spacing={3}>
+        <Masonry 
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+        >
           {notes.map(note => (
-            <Grid item key={note.id} xs={12} md={6} lg={4}>
-              <NoteCard note={note} handleDelete={handleDelete}/>
-            </Grid>
+            <div key={note.id}>
+              <NoteCard note={note} handleDelete={handleDelete} noteForUpdateSetter={noteForUpdateSetter}/>
+            </div>
         ))}
-        </Grid>
+        </Masonry>
+        
+        
 
       </Container>
     )
