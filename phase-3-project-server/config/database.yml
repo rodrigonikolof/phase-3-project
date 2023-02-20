@@ -35,7 +35,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: phase3
+  database: phase3project
   pool: 5
   username: postgres
   password: 1234
@@ -65,7 +65,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: phase3_test
+  database: phase3projecttest
   pool: 5
   username: postgres
   password: 1234
