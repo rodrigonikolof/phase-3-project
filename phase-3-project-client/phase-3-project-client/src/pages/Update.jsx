@@ -12,17 +12,17 @@ const useStyles = makeStyles({
     marginBottom: 20,
   }
 })
+  
 
-
-export default function Create({ noteForUpdate, noteForUpdateSetter }) {
+export default function Update({ noteForUpdate }) {
 
     const classes = useStyles()
     const navigate = useNavigate()
-    const [title, setTitle] = useState('')
-    const [details, setDetails] = useState('')
+    const [title, setTitle] = useState(noteForUpdate.title)
+    const [details, setDetails] = useState(noteForUpdate.details)
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
-    const [category, setCategory] = useState('Non-Urgent')
+    const [category, setCategory] = useState(noteForUpdate.category)
 
 
     const handleSubmit = (e)=>{
@@ -30,43 +30,45 @@ export default function Create({ noteForUpdate, noteForUpdateSetter }) {
       title? setTitleError(false) : setTitleError(true)
       details? setDetailsError(false) : setDetailsError(true)
 
-      if (title && details && !noteForUpdate.id ){
-        fetch('http://localhost:8000/notes', {
-          method: 'POST',
-          headers: {"Content-type": "application/json"},
-          body: JSON.stringify({title, details, category})
-        }).then(() => navigate('/')) 
+      if (title && details && note == {}){
+        // fetch('http://localhost:8000/notes', {
+        //   method: 'POST',
+        //   headers: {"Content-type": "application/json"},
+        //   body: JSON.stringify({title, details, category})
+        // }).then(() => navigate('/'))
+        newNote()
       }
-      else if (title && details && noteForUpdate.id ){
-        
-        fetch(`http://localhost:8000/notes/${noteForUpdate.id}`,{
-            method: "PATCH",
-            headers: {
-                'Content-Type' : 'application/json',
-            },
-            body: JSON.stringify({ title, details, category})
-        })
-        .then(res => res.json())
-        .then((data)=>console.log(data))
-        .then(()=>noteForUpdateSetter({}))
-        .then(() => navigate('/'))
-      }
+      // if (title && details && note.id){
+      //     updateNote()
+      // }
     }
 
+    const newNote = ()=>{
+      fetch('http://localhost:8000/notes', {
+        method: 'POST',
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({title, details, category})
+      }).then(() => navigate('/'))
+    }
+
+    const updateNote = ()=>{
+
+    }
+
+
     useEffect(() => {
-      if (noteForUpdate != {}){
-        setTitle(noteForUpdate.title)
-        setDetails(noteForUpdate.details)
-        setCategory(noteForUpdate.category)
-      }
-    },[]);
+      console.log(noteForUpdate.category)
+    });
+ 
+    noteForUpdate == {} ? console.log(note) : console.log('nothing here')
 
     return (
+      
       <Container>
-   
+      
         <Typography 
           variant="h6" component="h2" color="textSecondary" gutterBottom>
-          {noteForUpdate.id? "Update Note" : "Create New Note"}
+          {noteForUpdate.id? 'Update Your Note' : 'Create New Note '}
         </Typography>
 
         <form onSubmit={handleSubmit}
@@ -82,8 +84,7 @@ export default function Create({ noteForUpdate, noteForUpdateSetter }) {
             multiline rows={4} error={detailsError} 
             value={details}
             />
-          <RadioGroup value={category} onChange={(e)=>setCategory(e.target.value)} 
-          defaultValue={"Non-Urgent"}>
+          <RadioGroup value={category} onChange={(e)=>setCategory(e.target.value)} defaultValue="Non-Urgent">
             <FormControlLabel value="Non-Urgent" control={<Radio/>} label="Non-Urgent"/>
             <FormControlLabel value="Attention" control={<Radio/>} label="Needs Attention"/>
             <FormControlLabel value="Urgent" control={<Radio/>} label="Urgent"/>

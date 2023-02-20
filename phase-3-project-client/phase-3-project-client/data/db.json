@@ -1,24 +1,6 @@
 {
   "notes": [
     {
-      "title": "Go for a walk",
-      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "category": "reminders",
-      "id": 1
-    },
-    {
-      "title": "Organise Birthday Party",
-      "details": "akjbg ouheoihegqeg qoi4htqotiqt",
-      "category": "todo",
-      "id": 5
-    },
-    {
-      "title": "Create new Note!",
-      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "category": "todo",
-      "id": 6
-    },
-    {
       "title": "lkaheiahea ",
       "details": "lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea ",
       "category": "Non-Urgent",
@@ -31,10 +13,46 @@
       "id": 8
     },
     {
-      "title": "lkaheiahea lkaheiahea lkaheiahea lkaheiahea ",
-      "details": "lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea ",
+      "title": "asdasda",
+      "details": "qweqweqweqewq",
       "category": "Attention",
-      "id": 9
+      "id": 14
+    },
+    {
+      "title": "2222222222222222",
+      "details": "asdad",
+      "category": "Non-Urgent",
+      "id": 15
+    },
+    {
+      "title": "asdas",
+      "details": "qweqwe",
+      "category": "Non-Urgent",
+      "id": 16
+    },
+    {
+      "title": "lkaheiahea werqwerq",
+      "details": "lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea lkaheiahea sdfswew",
+      "category": "Attention",
+      "id": 17
+    },
+    {
+      "title": "qweqweqqweq",
+      "details": "asdad hello 123",
+      "category": "Non-Urgent",
+      "id": 18
+    },
+    {
+      "title": "asdasda",
+      "details": "qweqeqweq",
+      "category": "Urgent",
+      "id": 19
+    },
+    {
+      "title": "asdasda 100",
+      "details": "qweqeqweq 100",
+      "category": "Attention",
+      "id": 20
     }
   ]
 }

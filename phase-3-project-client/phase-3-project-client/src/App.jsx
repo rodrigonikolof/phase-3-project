@@ -19,16 +19,16 @@ function noteForUpdateSetter (note){
   navigate('/create')
 }
 
-// useEffect(()=>{
+useEffect(()=>{
  
-// },[noteForUpdate])
+},[noteForUpdate])
 
   return (
    
     <Layout>
       <Routes>
         <Route exact path="/" element={<Notes noteForUpdateSetter={noteForUpdateSetter}/>}/>
-        <Route path="/create" element={<Create noteForUpdate={noteForUpdate}/>}/>      
+        <Route path="/create" element={<Create noteForUpdate={noteForUpdate} noteForUpdateSetter={noteForUpdateSetter}/>}/>      
       </Routes>
     </Layout>
 

@@ -50,7 +50,7 @@ export default function NoteCard({note, handleDelete, noteForUpdateSetter}){
                 />
                 
                 <CardContent sx={{overflow: 'visible'}}>
-                    <Typography variant='body2' color="textSecondary" onClick={handleUpdate}>
+                    <Typography variant='body2' color="textSecondary" onClick={handleUpdate} sx={{cursor: 'pointer'}}> 
                         {note.details}
                     </Typography>
                 </CardContent>
