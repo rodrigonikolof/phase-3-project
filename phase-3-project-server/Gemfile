@@ -8,6 +8,18 @@ gem "activerecord", "~> 6.1"
 # https://github.com/sinatra-activerecord/sinatra-activerecord
 gem "sinatra-activerecord"
 
+# A DSL for quickly creating web applications
+# https://github.com/sinatra/sinatra
+gem "sinatra", "~> 2.1"
+
+# Rack middleware. Used specifically for parsing the request body into params.
+# https://github.com/rack/rack-contrib
+gem "rack-contrib", "~> 2.3"
+
+# More Rack middleware! Used to handle CORS requests
+# https://github.com/cyu/rack-cors
+gem "rack-cors", "~> 1.1"
+
 # Run common tasks from the command line
 # https://github.com/ruby/rake
 gem "rake"
@@ -21,7 +33,14 @@ gem 'pg'
 # https://github.com/jarmo/require_all
 gem "require_all"
 
+# A fast and simple web server
+# https://github.com/macournoyer/thin
+gem "thin", "~> 1.8"
+
 # These gems will only be used when we are running the application locally
 group :development do
   gem "pry"
+  # Automatically reload when there are changes
+  # https://github.com/alexch/rerun
+  gem "rerun"
 end
