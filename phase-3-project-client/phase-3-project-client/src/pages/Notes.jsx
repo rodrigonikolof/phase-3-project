@@ -32,7 +32,7 @@ const breakpoints = {
 }
 
     return (
-      <Container>
+      <Container >
         
         <Masonry 
         breakpointCols={breakpoints}

@@ -1,11 +1,11 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Notes from './pages/Notes'
-import Create from './pages/Create'
+import CreateNote from './pages/CreateNote'
 import Layout from "./components/Layout";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 
-
+// export const Context = React.createContext();
 
 
 function App() {
@@ -25,12 +25,14 @@ useEffect(()=>{
 
   return (
    
-    <Layout>
+    // <Context.Provider value={[noteForUpdate, setNoteForUpdate]}>
+    <Layout noteForUpdateSetter={noteForUpdateSetter}>
       <Routes>
         <Route exact path="/" element={<Notes noteForUpdateSetter={noteForUpdateSetter}/>}/>
-        <Route path="/create" element={<Create noteForUpdate={noteForUpdate} noteForUpdateSetter={noteForUpdateSetter}/>}/>      
+        <Route path="/create" element={<CreateNote noteForUpdate={noteForUpdate} noteForUpdateSetter={noteForUpdateSetter}/>}/>      
       </Routes>
     </Layout>
+    /* </Context.Provider> */
 
   )
 }

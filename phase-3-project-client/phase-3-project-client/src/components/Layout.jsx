@@ -3,16 +3,19 @@ import { Typography, Drawer, ListItem, List, ListItemIcon, ListItemText, ListIte
 import { makeStyles } from '@mui/styles';
 import AddIcon from '@mui/icons-material/Add';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { useNavigate } from "react-router-dom";
 import DrawerMenu from './DrawerMenu'
 import {format} from 'date-fns'
+import UserSelect from './UserSelect';
+// import { Context } from '../App';
 
-export default function Layout({children}){
+export default function Layout({children, noteForUpdateSetter}){
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const navigate = useNavigate()
     // const classes = useStyles()
+    // const Context = useContext(Context)
 
     const menuItems = [
         { 
@@ -30,7 +33,7 @@ export default function Layout({children}){
     return (
 <div>
 <Box sx={{ flexGrow: 1, mb: 3  }}>
-      <AppBar position="static" color='secondary'>
+      <AppBar position="static" color='default'>
         <Toolbar>
           <IconButton
             onClick={()=>setIsDrawerOpen(true)}
@@ -43,10 +46,9 @@ export default function Layout({children}){
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-               Note Tracker
+          {format(new Date(), 'do MMMM Y')}
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
-          <Typography>{format(new Date(), 'do MMMM Y')}</Typography>
+          <UserSelect/>
         </Toolbar>
       </AppBar>
     </Box>  
@@ -67,6 +69,7 @@ export default function Layout({children}){
               >
                 <ListItemButton 
                     onClick={()=>{
+                      noteForUpdateSetter({})
                       navigate(item.path)
                       setIsDrawerOpen(false)
                     }} 

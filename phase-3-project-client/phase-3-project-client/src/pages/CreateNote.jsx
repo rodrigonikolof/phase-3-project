@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 })
 
 
-export default function Create({ noteForUpdate, noteForUpdateSetter }) {
+export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
 
     const classes = useStyles()
     const navigate = useNavigate()
