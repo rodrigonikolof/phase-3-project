@@ -1,9 +1,9 @@
 import { Typography, Button, Container, TextField, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { makeStyles } from '@mui/styles';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Context } from "../App";
 
 
 const useStyles = makeStyles({
@@ -12,7 +12,6 @@ const useStyles = makeStyles({
     marginBottom: 20,
   }
 })
-
 
 export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
 
@@ -23,7 +22,7 @@ export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
     const [category, setCategory] = useState('Non-Urgent')
-
+    const [user] = useContext(Context);
 
     const handleSubmit = (e)=>{
       e.preventDefault()
@@ -34,7 +33,7 @@ export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
         fetch('http://localhost:8000/notes', {
           method: 'POST',
           headers: {"Content-type": "application/json"},
-          body: JSON.stringify({title, details, category})
+          body: JSON.stringify({title, details, category, user})
         }).then(() => navigate('/')) 
       }
       else if (title && details && noteForUpdate.id ){
@@ -47,11 +46,11 @@ export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
             body: JSON.stringify({ title, details, category})
         })
         .then(res => res.json())
-        .then((data)=>console.log(data))
         .then(()=>noteForUpdateSetter({}))
         .then(() => navigate('/'))
       }
     }
+
 
     useEffect(() => {
       if (noteForUpdate != {}){
@@ -63,7 +62,6 @@ export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
 
     return (
       <Container>
-   
         <Typography 
           variant="h6" component="h2" color="textSecondary" gutterBottom>
           {noteForUpdate.id? "Update Note" : "Create New Note"}
@@ -73,12 +71,12 @@ export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
           autoComplete="off" noValidate>
           <TextField 
             onChange={(e)=>{setTitle(e.target.value)}} 
-            label="Title" color="error" fullWidth required sx={{marginBottom: 1 }} error={titleError}
+            label="Title"  fullWidth required sx={{marginBottom: 1 }} error={titleError}
             value={title}
             />
           <TextField 
             onChange={(e)=>{setDetails(e.target.value)}} 
-            label="Note Details" color="error" fullWidth required sx={{marginBottom: 1 }} 
+            label="Note Details" fullWidth required sx={{marginBottom: 1 }} 
             multiline rows={4} error={detailsError} 
             value={details}
             />
@@ -89,15 +87,11 @@ export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
             <FormControlLabel value="Urgent" control={<Radio/>} label="Urgent"/>
           </RadioGroup>
 
-          <Button type="submit" color="secondary" variant="contained" endIcon={<KeyboardArrowRightIcon/>}
+          <Button type="submit" color="primary" variant="contained" endIcon={<KeyboardArrowRightIcon/>}
           >
           Submit
           </Button>
-
         </form>
-
       </Container>
-
-      
     )
   }

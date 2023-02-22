@@ -1,31 +1,27 @@
-import { styled } from '@mui/system';
-import { Typography, Drawer, ListItem, List, ListItemIcon, ListItemText, ListItemButton, AppBar, Toolbar, Box, IconButton, Button, Container } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+
+import { Typography, Drawer, ListItem, List, ListItemIcon, ListItemText, ListItemButton, AppBar, Toolbar, Box, IconButton, Container } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { useNavigate } from "react-router-dom";
-import DrawerMenu from './DrawerMenu'
 import {format} from 'date-fns'
 import UserSelect from './UserSelect';
-// import { Context } from '../App';
+
 
 export default function Layout({children, noteForUpdateSetter}){
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const navigate = useNavigate()
-    // const classes = useStyles()
-    // const Context = useContext(Context)
 
     const menuItems = [
         { 
           text: 'My Notes', 
-          icon: <TextSnippetIcon color="secondary" />, 
+          icon: <TextSnippetIcon color="primary" />, 
           path: '/' 
         },
         { 
           text: 'Create Note', 
-          icon: <AddIcon color="secondary" />, 
+          icon: <AddIcon color="primary" />, 
           path: '/create' 
         },
       ];
@@ -39,14 +35,14 @@ export default function Layout({children, noteForUpdateSetter}){
             onClick={()=>setIsDrawerOpen(true)}
             size="large"
             edge="start"
-            color="inherit"
+            color="transparent"
             aria-label="menu"
             sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          {format(new Date(), 'do MMMM Y')}
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'grey' }}>
+          {format(new Date(), 'dd MMMM Y')}
           </Typography>
           <UserSelect/>
         </Toolbar>

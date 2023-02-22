@@ -4,20 +4,22 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { yellow, red, green } from '@mui/material/colors';
-import { makeStyles } from '@mui/styles';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Context } from '../App';
 
 export default function UserSelect(){
-    const [user, setUser] = React.useState([]);
+    const [user, setUser] = useContext(Context);
+    const [allUsers, setAllUsers] = useState([])
 
     const handleChange = (event) => {
       setUser(event.target.value);
     };
 
-useEffect(()=>{
-
-})
+    useEffect(()=>{
+          fetch(' http://localhost:8000/users')
+          .then(res => res.json())
+          .then(data => setAllUsers(data))
+    },[])
 
 
     return(
@@ -28,14 +30,12 @@ useEffect(()=>{
         <Select 
           value={user}
           label="User"
-        //   MenuProps={{ disablePortal: true }}
           onChange={handleChange}
         >
+          {allUsers.map((user)=>(
+            <MenuItem value={user.id} key={user.id}>{user.name}</MenuItem>
+          ))}
 
-          <MenuItem value={10}>Ringo</MenuItem>
-          <MenuItem value={20}>John</MenuItem>
-          <MenuItem value={30}>Paul</MenuItem>
-          <MenuItem value={30}>George</MenuItem>
         </Select>
       </FormControl>
     </Box>

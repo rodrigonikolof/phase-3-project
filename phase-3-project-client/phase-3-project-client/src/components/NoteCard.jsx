@@ -1,27 +1,20 @@
 import { DeleteOutlined } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import { yellow, red, green } from '@mui/material/colors';
-import { Card, CardHeader, CardMedia, CardContent, IconButton, Typography } from '@mui/material';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-
-
-
-
+import { Card, CardHeader, CardContent, IconButton, Typography } from '@mui/material';
 
 export default function NoteCard({note, handleDelete, noteForUpdateSetter}){
     
-
     const avatarBgColor = (note) => {
         if (note.category === "Urgent") {
-          return red[700];
+          return red[300];
         }
         if (note.category === "Attention") {
-            return yellow[700];
+            return yellow[400];
           }
           if (note.category === "Non-Urgent") {
-            return green[400];
+            return green[300];
           }
-        
       };
 
       function handleUpdate(){
@@ -54,10 +47,7 @@ export default function NoteCard({note, handleDelete, noteForUpdateSetter}){
                         {note.details}
                     </Typography>
                 </CardContent>
-                
-            </Card>
-
-           
+            </Card>  
         </div>
     )
 }

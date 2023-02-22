@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
-import { Grid, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import NoteCard from "../components/NoteCard";
 import Masonry from 'react-masonry-css';
-
-
 
 
 export default function Notes({noteForUpdateSetter}) {
@@ -33,7 +31,6 @@ const breakpoints = {
 
     return (
       <Container >
-        
         <Masonry 
         breakpointCols={breakpoints}
         className="my-masonry-grid"
@@ -45,9 +42,6 @@ const breakpoints = {
             </div>
         ))}
         </Masonry>
-        
-        
-
       </Container>
     )
   }
