@@ -7,4 +7,8 @@ class ApplicationController < Sinatra::Base
     "HELLO WORLD!!!"
   end
 
+  get '/users' do
+    User.all.to_json
+  end
+
 end
