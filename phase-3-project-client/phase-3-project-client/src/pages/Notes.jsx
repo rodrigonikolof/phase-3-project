@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Container } from '@mui/material';
 import NoteCard from "../components/NoteCard";
 import Masonry from 'react-masonry-css';
+import { Context } from "../App";
+
 
 
 export default function Notes({noteForUpdateSetter}) {
 
 const [notes, setNotes] = useState([])
+const [user] = useContext(Context);
 
 useEffect(()=>{
-  fetch(' http://localhost:8000/notes')
+  fetch(`http://localhost:8000/notes/user/${user}`)
     .then(res => res.json())
     .then(data => setNotes(data))
-},[])
+},[user])
 
 
 const handleDelete = async (id) => {

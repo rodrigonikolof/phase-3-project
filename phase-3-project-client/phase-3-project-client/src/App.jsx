@@ -20,6 +20,9 @@ function noteForUpdateSetter (note){
 useEffect(()=>{
 },[noteForUpdate])
 
+useEffect(()=>{
+},[user])
+
   return (
 
     <Context.Provider value={[user, setUser]}>
