@@ -9,7 +9,7 @@ task :server do
   end
 
   # rackup -p PORT will run on the port specified 
-  ENV["PORT"] ||= "3000"
+  ENV["PORT"] ||= "8000"
   rackup = "rackup -p #{ENV['PORT']}"
 
   # rerun allows auto-reloading of server when files are updated
