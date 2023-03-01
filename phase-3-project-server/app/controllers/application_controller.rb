@@ -5,6 +5,14 @@ class ApplicationController < Sinatra::Base
       User.all.to_json
     end
 
+
+    post '/users' do
+      user = User.create(
+        name: params[:name]
+      ).to_json
+      
+    end
+
     get '/notes/user/:id' do 
       Note.where(user_id: params[:id]).to_json
     end
@@ -21,6 +29,8 @@ class ApplicationController < Sinatra::Base
       user_id: params[:user]
      )
     end
+
+    
 
     patch '/notes/:id' do
       note = Note.find(params[:id])
