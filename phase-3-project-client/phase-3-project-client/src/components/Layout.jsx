@@ -24,6 +24,11 @@ export default function Layout({children, noteForUpdateSetter}){
           icon: <AddIcon color="primary" />, 
           path: '/create' 
         },
+        { 
+          text: 'Add User', 
+          icon: <AddIcon color="primary" />, 
+          path: '/createuser' 
+        },
       ];
 
     return (
