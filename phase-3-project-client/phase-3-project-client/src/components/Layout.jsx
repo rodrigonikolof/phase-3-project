@@ -7,11 +7,12 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { useNavigate } from "react-router-dom";
 import {format} from 'date-fns'
 import UserSelect from './UserSelect';
+import BoardSelect from './BoardSelect';
 
 
 export default function Layout({children, noteForUpdateSetter}){
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-    const navigate = useNavigate()
+    const navigate = useNavigate()   
 
     const menuItems = [
         { 
@@ -30,6 +31,7 @@ export default function Layout({children, noteForUpdateSetter}){
           path: '/createuser' 
         },
       ];
+
 
     return (
 <div>

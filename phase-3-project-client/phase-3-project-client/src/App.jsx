@@ -11,6 +11,9 @@ function App() {
   
 const [noteForUpdate, setNoteForUpdate] = useState({})
 const [user, setUser] = useState(1)
+const [boards, setBoards] = useState([])
+const [currentBoard, setCurrentBoard] = useState('')
+
 const navigate = useNavigate()
 
 function noteForUpdateSetter (note){
@@ -22,6 +25,7 @@ useEffect(()=>{
 },[noteForUpdate])
 
 useEffect(()=>{
+  navigate('/')
 },[user])
 
   return (
@@ -29,7 +33,13 @@ useEffect(()=>{
     <Context.Provider value={[user, setUser]}>
       <Layout noteForUpdateSetter={noteForUpdateSetter}>
         <Routes>
-          <Route exact path="/" element={<Notes noteForUpdateSetter={noteForUpdateSetter}/>}/>
+          <Route exact path="/" 
+            element={
+              <Notes 
+                noteForUpdateSetter={noteForUpdateSetter}
+                boards={boards} setBoards={setBoards}
+                currentBoard={currentBoard} setCurrentBoard={setCurrentBoard}
+              />}/>
           <Route path="/create" element={<CreateNote noteForUpdate={noteForUpdate} noteForUpdateSetter={noteForUpdateSetter}/>}/>   
           <Route path="/createuser" element={<CreateUser/>}/> 
 
