@@ -10,16 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_23_011530) do
+ActiveRecord::Schema.define(version: 2023_03_04_013258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boards", force: :cascade do |t|
+    t.string "board_name"
+    t.integer "user_id"
+  end
 
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.string "details"
     t.string "category"
-    t.integer "user_id"
+    t.integer "board_id"
   end
 
   create_table "users", force: :cascade do |t|
