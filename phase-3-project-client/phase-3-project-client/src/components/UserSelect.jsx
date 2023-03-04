@@ -19,7 +19,7 @@ export default function UserSelect(){
           fetch(' http://localhost:8000/users')
           .then(res => res.json())
           .then(data => setAllUsers(data))
-    })
+    },[user])
 
 
     return(

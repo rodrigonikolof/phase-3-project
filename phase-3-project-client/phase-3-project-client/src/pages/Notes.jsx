@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default function Notes({noteForUpdateSetter, boards, setBoards, currentBoard, setCurrentBoard}) {
 
 const [notes, setNotes] = useState([])
-const [showMessage, setShowMessage] = useState(true)
+const [showMessage, setShowMessage] = useState(false)
 const [user] = useContext(Context);
 
 
@@ -33,11 +33,14 @@ const handleChange = (event) => {
 
 useEffect(()=>{
   setNotes([]) 
+  setShowMessage(false)
 },[user])
 
 useEffect(()=>{
   getNotes()
 },[currentBoard])
+
+
 
 const handleDelete = async (id) => {
   await fetch(`http://localhost:8000/notes/${id}`, {
@@ -54,6 +57,7 @@ const breakpoints = {
 }
 
 
+const message = <Typography><Link to='/create' style={{ textDecoration: 'none' }}>Select a Board or Create Your First Note To Get Started</Link></Typography>
     
 
 
@@ -78,7 +82,7 @@ const breakpoints = {
         </FormControl>
       </Box>
 
-      {/* <Typography><Link to='/create' style={{ textDecoration: 'none' }}>Select a Board or Create Your First Note To Get Started</Link></Typography> */}
+      {showMessage? message : null}
 
         <Masonry 
         breakpointCols={breakpoints}

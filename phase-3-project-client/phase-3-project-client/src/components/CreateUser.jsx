@@ -1,11 +1,11 @@
 import { Typography, TextField, Container, Button} from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import { Context } from '../App';
 
 export default function CreateUser(){
-
+    const [user, setUser] = useContext(Context);
     const navigate = useNavigate()
     const [name, setName] = useState('')
 
@@ -16,7 +16,10 @@ const handleSubmit = (e)=>{
           method: 'POST',
           headers: {"Content-type": "application/json"},
           body: JSON.stringify({name})
-        }).then(res => res.text())
+        })
+        // .then(res => res.text())
+        .then(res => res.json())
+        .then(data => setUser(data.id))
         .then(() => navigate('/')) 
       }
 
