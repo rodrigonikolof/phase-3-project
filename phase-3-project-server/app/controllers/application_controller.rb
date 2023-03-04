@@ -5,15 +5,17 @@ class ApplicationController < Sinatra::Base
       User.all.to_json
     end
 
+    get '/user/:id' do
+      User.find(params[:id]).boards.to_json
+    end
 
     post '/users' do
       user = User.create(
         name: params[:name]
-      ).to_json
-    end
-
-    get '/user/:id' do
-      User.find(params[:id]).boards.to_json
+      )
+      Board.create(board_name: 'Personal', user_id: user.id)
+      Board.create(board_name: 'Work', user_id: user.id)
+      user.to_json
     end
 
     get '/boards/:board_id' do
@@ -29,23 +31,26 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/notes' do
-      # User.find(1).boards.find_by(board_name: "Work")
+      # board = User.find(1).boards.find_by(board_name: "Work")
+      board_id = User.find(params[:user]).boards.find_by(board_name: params[:board]).id
      note = Note.create(
       title: params[:title],
       details: params[:details],
       category: params[:category],
-      board_id: params[:user]
+      board_id: board_id
      )
     end
 
     
 
     patch '/notes/:id' do
+      board_id = User.find(params[:user]).boards.find_by(board_name: params[:board]).id
       note = Note.find(params[:id])
       note.update(
         title: params[:title],
       details: params[:details],
-      category: params[:category]
+      category: params[:category],
+      board_id: board_id
       )
       note.to_json
     end
