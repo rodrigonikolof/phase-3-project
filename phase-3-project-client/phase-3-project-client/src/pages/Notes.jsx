@@ -4,12 +4,14 @@ import NoteCard from "../components/NoteCard";
 import Masonry from 'react-masonry-css';
 import { Context } from "../App";
 
+import { Link } from "react-router-dom";
 
 
 
 export default function Notes({noteForUpdateSetter, boards, setBoards, currentBoard, setCurrentBoard}) {
 
 const [notes, setNotes] = useState([])
+const [showMessage, setShowMessage] = useState(true)
 const [user] = useContext(Context);
 
 
@@ -19,10 +21,9 @@ useEffect(()=>{
   .then(data => setBoards(data))
 },[user])
 
-const handleChange = async (event) => {
+const handleChange = (event) => {
  setCurrentBoard(event.target.value)
- await getNotes()
-    };
+  };
 
  const getNotes = async ()=> {
    await fetch(`http://localhost:8000/boards/${currentBoard}`)
@@ -33,6 +34,10 @@ const handleChange = async (event) => {
 useEffect(()=>{
   setNotes([]) 
 },[user])
+
+useEffect(()=>{
+  getNotes()
+},[currentBoard])
 
 const handleDelete = async (id) => {
   await fetch(`http://localhost:8000/notes/${id}`, {
@@ -47,6 +52,11 @@ const breakpoints = {
   700: 2,
   500: 1
 }
+
+
+    
+
+
 
     return (
       
@@ -67,6 +77,8 @@ const breakpoints = {
           </Select>
         </FormControl>
       </Box>
+
+      {/* <Typography><Link to='/create' style={{ textDecoration: 'none' }}>Select a Board or Create Your First Note To Get Started</Link></Typography> */}
 
         <Masonry 
         breakpointCols={breakpoints}

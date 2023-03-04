@@ -45,7 +45,7 @@ export default function CreateNote({ noteForUpdate, noteForUpdateSetter }) {
             headers: {
                 'Content-Type' : 'application/json',
             },
-            body: JSON.stringify({ title, details, category})
+            body: JSON.stringify({ title, details, category,user, board})
         })
         .then(res => res.json())
         .then(()=>noteForUpdateSetter({}))

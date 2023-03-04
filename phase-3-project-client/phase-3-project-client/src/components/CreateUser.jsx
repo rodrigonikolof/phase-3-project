@@ -1,15 +1,12 @@
 import { Typography, TextField, Container, Button} from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import AddIcon from '@mui/icons-material/Add';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
-import TextSnippetIcon from '@mui/icons-material/TextSnippet';
-import {format} from 'date-fns'
-import UserSelect from './UserSelect';
+import { useNavigate } from "react-router-dom";
+
 
 export default function CreateUser(){
 
-
+    const navigate = useNavigate()
     const [name, setName] = useState('')
 
 
@@ -19,7 +16,8 @@ const handleSubmit = (e)=>{
           method: 'POST',
           headers: {"Content-type": "application/json"},
           body: JSON.stringify({name})
-        }).then(res => res.text()).then(res => console.log(res))
+        }).then(res => res.text())
+        .then(() => navigate('/')) 
       }
 
 
